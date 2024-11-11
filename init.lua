@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -615,9 +615,11 @@ require('lazy').setup({
         -- ts_ls = {},
         --
 
-        ruff_lsp = {
-          -- filetype = {},
-        },
+        -- ruff-lsp doesn't support most of the LSP things like got to document :(
+        -- ruff_lsp = {
+        --   -- filetype = {},
+        -- },
+        basedpyright = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -825,6 +827,14 @@ require('lazy').setup({
     end,
   },
 
+  { -- Another Color scheme to load
+    -- colorscheme { catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha }
+    --              Lightest to darkest
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+  },
+
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -836,7 +846,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'catppuccin-mocha'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -884,6 +894,8 @@ require('lazy').setup({
           ignore_blank_line = true,
         },
       }
+
+      require('mini.icons').setup()
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
