@@ -1091,6 +1091,7 @@ require('lazy').setup({
     keys = {
       { '<leader>sc', ":lua require('lazyclip').show_clipboard()<CR>", desc = '[S]earch [C]lipboard manager' },
     },
+    event = { 'VimEnter' },
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
