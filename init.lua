@@ -867,6 +867,7 @@ require('lazy').setup({
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
+      dashboard = { example = 'compact_files' },
       notifier = {
         enabled = true,
         timeout = 5000,
