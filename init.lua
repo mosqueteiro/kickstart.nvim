@@ -1057,6 +1057,11 @@ require('lazy').setup({
         },
       }
 
+      -- Neovim session manager
+      require('mini.sessions').setup {
+        file = '.session.vim',
+      }
+
       require('mini.icons').setup()
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
@@ -1088,7 +1093,7 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
-  { 'tpope/vim-obsession' },
+  -- { 'tpope/vim-obsession' },
 
   {
     'atiladefreitas/lazyclip',
