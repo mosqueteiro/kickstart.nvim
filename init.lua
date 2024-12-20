@@ -1027,12 +1027,18 @@ require('lazy').setup({
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
+      --  - vaa  - [V]isually select [Around] [A]rguments
+      --  - yaf  - [Y]ank [A]round [F]unction
+      --  - yan) - [Y]ank [A]round [N]ext [)]paren
+      --  - yal) - [Y]ank [A]round [L]ast [)]paren
       require('mini.ai').setup { n_lines = 500 }
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+      -- - saBf  - [S]urround [A]dd [B]prev WORD w/ [F]unction
       -- - sd'   - [S]urround [D]elete [']quotes
+      -- - sdf   - [S]urround [D]elete [F]unction
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
