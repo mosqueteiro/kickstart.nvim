@@ -922,13 +922,13 @@ require('lazy').setup({
         end,
         desc = 'Delete Buffer',
       },
-      {
-        '<leader>gg',
-        function()
-          Snacks.lazygit()
-        end,
-        desc = 'Lazygit',
-      },
+      -- {
+      --   '<leader>gg',
+      --   function()
+      --     Snacks.lazygit()
+      --   end,
+      --   desc = 'Lazygit',
+      -- },
       {
         '<leader>gb',
         function()
@@ -1131,12 +1131,45 @@ require('lazy').setup({
     },
     event = { 'VimEnter' },
   },
+
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
+  },
+
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff intergration
+
+      -- Only one of these is needed
+      'nvim-telescope/telescope.nvim', -- optional
+      -- 'ibhagwan/fzf-lua',            -- optional
+      -- 'echasnovski/mini.nvim',       -- optional
+      -- 'folke/snacks.nvim',           -- optional
+    },
+    opts = {
+      kind = 'replace',
+      commit_editor = {
+        kind = 'floating',
+      },
+      log_view = {
+        kind = 'tab',
+      },
+    },
+    keys = {
+      { '<leader>gs', '<cmd>Neogit<CR>', desc = '[g]it [s]tatus' },
+      -- This command isn't currently working. Need to figure out syntax
+      -- {
+      --   '<leader>gg',
+      --   require('neogit').action('log', 'log_all_references', { '-n 256', '--topo-order', '--graph', '--color', '--decorate' }),
+      --   desc = '[g]it [g]raph',
+      -- },
+    },
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
