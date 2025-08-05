@@ -1154,6 +1154,10 @@ require('lazy').setup({
     },
     opts = {
       kind = 'replace',
+      floating = {
+        width = 0.9,
+        height = 0.8,
+      },
       commit_editor = {
         kind = 'floating',
       },
@@ -1164,11 +1168,12 @@ require('lazy').setup({
     keys = {
       { '<leader>gs', '<cmd>Neogit<CR>', desc = '[g]it [s]tatus' },
       -- This command isn't currently working. Need to figure out syntax
-      -- {
-      --   '<leader>gg',
-      --   require('neogit').action('log', 'log_all_references', { '-n 256', '--topo-order', '--graph', '--color', '--decorate' }),
-      --   desc = '[g]it [g]raph',
-      -- },
+      {
+        '<leader>gg',
+        -- require('neogit').action('log', 'log_all_references', { '-n 256', '--topo-order', '--graph', '--color', '--decorate' }),
+        '<cmd>Neogit log<CR>',
+        desc = '[g]it [g]raph',
+      },
     },
   },
 
