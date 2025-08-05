@@ -194,6 +194,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>', { desc = '[n]ext [b]uffer' })
 vim.keymap.set('n', '<leader>bp', '<cmd>bprevious<CR>', { desc = '[p]revious [b]uffer' })
 
+-- Keybinds for directory explorer
+vim.keymap.set('n', '<leader>x', '<cmd>20Lexplore<CR>', { desc = 'e[x]plore directory' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
