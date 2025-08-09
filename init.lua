@@ -881,7 +881,16 @@ require('lazy').setup({
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
-      dashboard = { example = 'compact_files' },
+      dashboard = {
+        -- example = 'compact_files'
+        sections = {
+          { section = 'header' },
+          { icon = ' ', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
+          { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
+          { icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
+          { section = 'startup' },
+        },
+      },
       notifier = {
         enabled = true,
         timeout = 5000,
@@ -1091,6 +1100,11 @@ require('lazy').setup({
       -- Neovim session manager
       require('mini.sessions').setup {
         file = '.session.vim',
+        verbose = {
+          read = true,
+          write = true,
+          delete = true,
+        },
       }
 
       require('mini.icons').setup()
