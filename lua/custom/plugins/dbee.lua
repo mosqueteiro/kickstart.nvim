@@ -2,6 +2,9 @@
 
 return {
   'kndndrj/nvim-dbee',
+  -- 'mosqueteiro/nvim-dbee',
+  -- dir = '~/Projects/nvim-dbee'
+  -- event = 'VeryLazy'
   dependencies = {
     'MunifTanjim/nui.nvim',
   },
