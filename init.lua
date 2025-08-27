@@ -1157,7 +1157,13 @@ require('lazy').setup({
   {
     'atiladefreitas/lazyclip',
     keys = {
-      { '<leader>sc', ":lua require('lazyclip').show_clipboard()<CR>", desc = '[S]earch [C]lipboard manager' },
+      {
+        '<leader>sc',
+        function()
+          require('lazyclip').show_clipboard()
+        end,
+        desc = '[S]how [C]lipboard manager',
+      },
     },
     event = { 'VimEnter' },
   },
