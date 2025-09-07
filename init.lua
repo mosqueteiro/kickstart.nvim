@@ -329,6 +329,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>g', group = 'Lazy[G]it' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>H', group = '[H]arpoon' },
       },
     },
   },
