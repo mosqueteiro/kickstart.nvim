@@ -260,6 +260,8 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      -- new keymaps here
+      -- or replace with Snacks or mini modules?
     },
   },
 
@@ -615,7 +617,6 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -649,6 +650,8 @@ require('lazy').setup({
         },
 
         bashls = {},
+
+        gopls = {},
 
         terraformls = {},
       }
