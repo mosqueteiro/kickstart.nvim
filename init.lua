@@ -1122,6 +1122,9 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -1135,6 +1138,7 @@ require('lazy').setup({
         'luadoc',
         'markdown',
         'markdown_inline',
+        'python',
         'query',
         'regex',
         'vim',
@@ -1151,13 +1155,49 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<C-space>',
+          node_incremental = '<C-space>',
+          scope_incremental = false,
+          node_decremental = false, -- node_decremental doesn't seem to work
+        },
+      },
+      textobjects = {
+        move = {
+          enable = true,
+          set_jumps = true, -- set jumps in jumplist
+          goto_next_start = {
+            [']m'] = { query = '@function.outer', desc = 'Next function/method' },
+            [']]'] = { query = '@class.outer', desc = 'Next class' },
+          },
+          goto_next_end = {
+            [']M'] = { query = '@function.outer', desc = 'Function/method end' },
+            [']['] = { query = '@class.outer', desc = 'Class end' },
+          },
+          goto_previous_start = {
+            ['[m'] = { query = '@function.outer', desc = 'Previous function/method' },
+            ['[['] = { query = '@class.outer', desc = 'Previous class' },
+          },
+          goto_previous_end = {
+            ['[M'] = { query = '@function.outer', desc = 'Previous function/method end' },
+            ['[]'] = { query = '@class.outer', desc = 'Previous class end' },
+          },
+        },
+      },
     },
-    -- There are additional nvim-treesitter modules that you can use to interact
+    -- There are aditional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    lazy = true,
   },
 
   -- { 'tpope/vim-obsession' },
