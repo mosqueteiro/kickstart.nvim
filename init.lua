@@ -1173,18 +1173,22 @@ require('lazy').setup({
           goto_next_start = {
             [']m'] = { query = '@function.outer', desc = 'Next function/method' },
             [']]'] = { query = '@class.outer', desc = 'Next class' },
+            [']c'] = { query = '@call.outer', desc = 'Next fn call' },
           },
           goto_next_end = {
             [']M'] = { query = '@function.outer', desc = 'Function/method end' },
             [']['] = { query = '@class.outer', desc = 'Class end' },
+            [']C'] = { query = '@call.outer', desc = 'fn call end' },
           },
           goto_previous_start = {
             ['[m'] = { query = '@function.outer', desc = 'Previous function/method' },
             ['[['] = { query = '@class.outer', desc = 'Previous class' },
+            ['[c'] = { query = '@call.outer', desc = 'Previous fn call' },
           },
           goto_previous_end = {
             ['[M'] = { query = '@function.outer', desc = 'Previous function/method end' },
             ['[]'] = { query = '@class.outer', desc = 'Previous class end' },
+            ['[C'] = { query = '@call.outer', desc = 'Previous fn call end' },
           },
         },
       },
