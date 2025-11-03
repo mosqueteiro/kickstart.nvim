@@ -1317,6 +1317,8 @@ require('lazy').setup({
   },
 })
 
+-- Manually added parsers
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 -- Custom SQL parser with jinja hooks
 -- parser_config.sql = {
 --   install_info = {
