@@ -670,7 +670,8 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'ruff',
-        'sqruff',
+        -- 'sqruff',
+        -- 'sqlfluff',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -730,7 +731,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         python = { 'ruff_fix' },
         go = { 'gofmt' },
-        sql = { 'sqruff' },
+        -- sql = { 'sqlfluff' },
         mojo = { 'mojo_format' },
       },
     },
@@ -1136,6 +1137,7 @@ require('lazy').setup({
         'c',
         'diff',
         'html',
+        'jinja',
         'lua',
         'luadoc',
         'markdown',
@@ -1145,7 +1147,7 @@ require('lazy').setup({
         'regex',
         'vim',
         'vimdoc',
-        'sql',
+        -- 'sql',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -1314,6 +1316,26 @@ require('lazy').setup({
     },
   },
 })
+
+-- Custom SQL parser with jinja hooks
+-- parser_config.sql = {
+--   install_info = {
+--     url = 'https://github.com/mosqueteiro/tree-sitter-sql.git',
+--     files = { 'src/parser.c', 'src/scanner.c' },
+--     branch = 'jinja-hooks',
+--     requires_generate_from_grammar = true,
+--   },
+--   -- filetype = 'sql',
+-- }
+parser_config.sql = {
+  install_info = {
+    url = '~/Projects/tree-sitter-sql.git/local-tree-sitter-sql',
+    files = { 'src/parser.c', 'src/scanner.c' },
+    branch = 'jinja-hooks',
+    requires_generate_from_grammar = false,
+  },
+  -- filetype = 'sql',
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
