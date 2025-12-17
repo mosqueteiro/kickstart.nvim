@@ -1245,7 +1245,7 @@ require('lazy').setup({
       -- 'folke/snacks.nvim',           -- optional
     },
     opts = {
-      kind = 'replace',
+      kind = 'tab',
       floating = {
         width = 0.9,
         height = 0.8,
