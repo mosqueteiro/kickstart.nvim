@@ -991,14 +991,14 @@ require('lazy').setup({
         function()
           Snacks.terminal()
         end,
-        desc = 'Toggle Terminal',
+        desc = 'Toggle Terminal (-)',
       },
       {
         '<c-_>',
         function()
           Snacks.terminal()
         end,
-        desc = 'which_key_ignore',
+        desc = 'Toggle Terminal',
       },
       {
         ']]',
