@@ -816,6 +816,8 @@ require('lazy').setup({
           --  Generally you don't need this, because nvim-cmp will display
           --  completions whenever it has completion options available.
           ['<C-Space>'] = cmp.mapping.complete {},
+          -- TODO: add something to cancel cmp
+          -- ['<C-S-Space'] = cmp.mapping.cancel
 
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
