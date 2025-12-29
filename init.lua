@@ -455,10 +455,19 @@ require('lazy').setup({
     -- used for completion, annotations and signatures of Neovim apis
     'folke/lazydev.nvim',
     ft = 'lua',
+    dependencies = {
+      {
+        'DrKJeff16/wezterm-types',
+        lazy = true,
+        version = false, -- Use latest version
+      },
+    },
     opts = {
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        -- Wezterm-types for Lua language server
+        { path = 'weterm-types', mods = { 'wezterm' } },
       },
     },
   },
