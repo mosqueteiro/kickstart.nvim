@@ -15,9 +15,9 @@ return {
   keys = function()
     local harpoon = require 'harpoon'
     local keys = {
-      -- { '<leader>H', group = '[H]arpoon group' },
+      -- { '<leader>h', group = '[h]arpoon group' },
       {
-        '<leader>Hl',
+        '<leader>hl',
         function()
           -- local harpoon = require 'harpoon'
           harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -25,7 +25,7 @@ return {
         desc = 'Harpoon [l]ist',
       },
       {
-        '<leader>HD',
+        '<leader>hD',
         function()
           -- local harpoon = require 'harpoon'
           harpoon:list():clear()
@@ -33,7 +33,7 @@ return {
         desc = 'Harpoon [D]elete list',
       },
       {
-        '<leader>Hd',
+        '<leader>hd',
         function()
           vim.ui.input({ prompt = 'Delete which index? ' }, function(input)
             -- local harpoon = require 'harpoon'
@@ -51,7 +51,7 @@ return {
         desc = '[d]elete item [#] from harpoon list',
       },
       {
-        '<leader>Ha',
+        '<leader>ha',
         function()
           vim.ui.input({ prompt = 'Add to which index? ' }, function(input)
             -- local harpoon = require 'harpoon'
