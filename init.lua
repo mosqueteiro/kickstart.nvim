@@ -194,9 +194,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>', { desc = '[n]ext [b]uffer' })
 vim.keymap.set('n', '<leader>bp', '<cmd>bprevious<CR>', { desc = '[p]revious [b]uffer' })
 
--- Keybinds for directory explorer
-vim.keymap.set('n', '<leader>x', '<cmd>20Lexplore<CR>', { desc = 'e[x]plore directory' })
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -914,9 +911,29 @@ require('lazy').setup({
           { section = 'startup' },
         },
       },
+      explorer = { replace_netrw = true, trash = true },
       notifier = {
         enabled = true,
         timeout = 5000,
+      },
+      picker = {
+        sources = {
+          explorer = {
+            auto_close = true,
+            layout = { preset = 'default', fullscreen = true, preview = true },
+            win = {
+              list = {
+                keys = {
+                  ['-'] = 'explorer_up',
+                  ['<C-CR>'] = 'select_and_next',
+                  ['<C-S-CR>'] = 'select_and_prev',
+                  ['<Tab>'] = 'confirm',
+                  ['<S-Tab>'] = 'explorer_close_all',
+                },
+              },
+            },
+          },
+        },
       },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
@@ -955,6 +972,20 @@ require('lazy').setup({
           Snacks.bufdelete()
         end,
         desc = 'Delete Buffer',
+      },
+      {
+        '<leader>x',
+        function()
+          Snacks.explorer {
+            auto_close = false,
+            layout = {
+              preset = 'sidebar',
+              fullscreen = false,
+              preview = false,
+            },
+          }
+        end,
+        desc = 'e[x]plore directory',
       },
       -- {
       --   '<leader>gg',
