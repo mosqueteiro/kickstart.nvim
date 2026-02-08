@@ -327,8 +327,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>g', group = 'Lazy[G]it' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
         { '<leader>H', group = '[H]arpoon' },
       },
     },
@@ -893,8 +892,6 @@ require('lazy').setup({
 
   {
     'folke/snacks.nvim',
-    -- Notes:
-    -- lazygit, the cli program, actually needs to be installed separately
     priority = 1000,
     lazy = false,
     -- Snacks = require 'snacks',
@@ -987,13 +984,6 @@ require('lazy').setup({
         end,
         desc = 'e[x]plore directory',
       },
-      -- {
-      --   '<leader>gg',
-      --   function()
-      --     Snacks.lazygit()
-      --   end,
-      --   desc = 'Lazygit',
-      -- },
       {
         '<leader>gb',
         function()
@@ -1007,20 +997,6 @@ require('lazy').setup({
           Snacks.gitbrowse()
         end,
         desc = 'Git Browse',
-      },
-      {
-        '<leader>gf',
-        function()
-          Snacks.lazygit.log_file()
-        end,
-        desc = 'Lazygit Current File History',
-      },
-      {
-        '<leader>gl',
-        function()
-          Snacks.lazygit.log()
-        end,
-        desc = 'Lazygit Log (cwd)',
       },
       {
         '<leader>cR',
@@ -1166,6 +1142,7 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -1279,7 +1256,22 @@ require('lazy').setup({
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim', -- required
-      'sindrets/diffview.nvim', -- optional - Diff intergration
+      {
+        'sindrets/diffview.nvim', -- optional - Diff intergration
+        opts = {
+          keymaps = {
+            view = {
+              { 'n', 'q', '<cmd>DiffviewClose<CR>', { desc = 'Close Diffview' } },
+            },
+            file_panel = {
+              { 'n', 'q', '<cmd>DiffviewClose<CR>', { desc = 'Close Diffview' } },
+            },
+            file_history_panel = {
+              { 'n', 'q', '<cmd>DiffviewClose<CR>', { desc = 'Close Diffview' } },
+            },
+          },
+        },
+      },
 
       -- Only one of these is needed
       'nvim-telescope/telescope.nvim', -- optional
@@ -1301,13 +1293,24 @@ require('lazy').setup({
       },
     },
     keys = {
-      { '<leader>gs', '<cmd>Neogit<CR>', desc = '[g]it [s]tatus' },
-      -- This command isn't currently working. Need to figure out syntax
       {
         '<leader>gg',
-        -- require('neogit').action('log', 'log_all_references', { '-n 256', '--topo-order', '--graph', '--color', '--decorate' }),
-        '<cmd>Neogit log<CR>',
-        desc = '[g]it [g]raph',
+        function()
+          require('neogit').open()
+        end,
+        desc = 'Neo[g]it',
+      },
+      {
+        '<leader>gl',
+        function()
+          require('neogit').action('log', 'log_all_references', { '-n 256', '--topo-order', '--graph', '--color', '--decorate' })()
+        end,
+        desc = '[g]it [l]og',
+      },
+      {
+        '<leader>gf',
+        '<cmd>DiffviewFileHistory %<CR>',
+        desc = '[g]it [f]ile history',
       },
     },
   },
