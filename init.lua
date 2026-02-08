@@ -909,6 +909,7 @@ require('lazy').setup({
         },
       },
       explorer = { replace_netrw = true, trash = true },
+      image = {},
       notifier = {
         enabled = true,
         timeout = 5000,
