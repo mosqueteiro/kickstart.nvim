@@ -1186,32 +1186,52 @@ require('lazy').setup({
           init_selection = '<C-space>',
           node_incremental = '<C-space>',
           scope_incremental = false,
-          node_decremental = false, -- node_decremental doesn't seem to work
+          node_decremental = '<BS>', -- node_decremental doesn't seem to work
         },
       },
       textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ['am'] = { query = '@function.outer', desc = 'Select around method/function definition' },
+            ['im'] = { query = '@function.inner', desc = 'Select inside method/function definition' },
+
+            ['ac'] = { query = '@class.outer', desc = 'Select around class' },
+            ['ic'] = { query = '@class.inner', desc = 'Select inside class' },
+
+            ['a='] = { query = '@assignment.outer', desc = 'Select around assignment' },
+            ['l='] = { query = '@assignment.lhs', desc = 'Select left hand side of assignment' },
+            ['r='] = { query = '@assignment.rhs', desc = 'Select right hand side fo assignment' },
+
+            ['al'] = { query = '@loop.outer', desc = 'Select around loop' },
+            ['il'] = { query = '@loop.inner', desc = 'Select inside loop' },
+
+            -- @call already handled by mini.ai
+          },
+        },
         move = {
           enable = true,
           set_jumps = true, -- set jumps in jumplist
           goto_next_start = {
             [']m'] = { query = '@function.outer', desc = 'Next function/method' },
-            [']]'] = { query = '@class.outer', desc = 'Next class' },
-            [']c'] = { query = '@call.outer', desc = 'Next fn call' },
+            [']c'] = { query = '@class.outer', desc = 'Next class' },
+            [']f'] = { query = '@call.outer', desc = 'Next fn call' },
           },
           goto_next_end = {
             [']M'] = { query = '@function.outer', desc = 'Function/method end' },
-            [']['] = { query = '@class.outer', desc = 'Class end' },
-            [']C'] = { query = '@call.outer', desc = 'fn call end' },
+            [']C'] = { query = '@class.outer', desc = 'Class end' },
+            [']F'] = { query = '@call.outer', desc = 'fn call end' },
           },
           goto_previous_start = {
             ['[m'] = { query = '@function.outer', desc = 'Previous function/method' },
-            ['[['] = { query = '@class.outer', desc = 'Previous class' },
-            ['[c'] = { query = '@call.outer', desc = 'Previous fn call' },
+            ['[c'] = { query = '@class.outer', desc = 'Previous class' },
+            ['[f'] = { query = '@call.outer', desc = 'Previous fn call' },
           },
           goto_previous_end = {
             ['[M'] = { query = '@function.outer', desc = 'Previous function/method end' },
-            ['[]'] = { query = '@class.outer', desc = 'Previous class end' },
-            ['[C'] = { query = '@call.outer', desc = 'Previous fn call end' },
+            ['[C'] = { query = '@class.outer', desc = 'Previous class end' },
+            ['[F'] = { query = '@call.outer', desc = 'Previous fn call end' },
           },
         },
       },
