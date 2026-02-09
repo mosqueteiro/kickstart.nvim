@@ -247,7 +247,6 @@ require('lazy').setup({
   --    require('gitsigns').setup({ ... })
   --
   -- See `:help gitsigns` to understand what the configuration keys do
-  -- TODO: Update these keys from h -> g
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -823,7 +822,7 @@ require('lazy').setup({
           --  completions whenever it has completion options available.
           ['<C-Space>'] = cmp.mapping.complete {},
           -- TODO: add something to cancel cmp
-          -- ['<C-S-Space'] = cmp.mapping.cancel
+          -- ['<C-S-Space>'] = cmp.mapping.cancel {},
 
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
