@@ -167,6 +167,15 @@ vim.keymap.set('i', '<S-Tab>', '<C-d>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>tdi', function()
+  local config = vim.diagnostic.config()
+  if config.virtual_text then
+    vim.diagnostic.config { virtual_text = false }
+  else
+    vim.diagnostic.config { virtual_text = { source = 'if_many' } }
+  end
+end, { desc = '[t]oggle [d]iagnostics [i]nlay' })
+-- vim.keymap.set()
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -326,6 +335,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
+        { '<leader>td', group = '[T]oggle [d]iagnostics' },
         { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
         { '<leader>h', group = '[H]arpoon' },
       },
@@ -1382,6 +1392,13 @@ require('lazy').setup({
     },
   },
 })
+
+-- Diagnostics configuration
+vim.diagnostic.config {
+  float = {
+    source = 'if_many',
+  },
+}
 
 -- Manually added parsers
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
