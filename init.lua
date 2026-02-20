@@ -1400,6 +1400,8 @@ vim.diagnostic.config {
   },
 }
 
+require 'custom.docker_compose_logs'
+
 -- Manually added parsers
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 -- Custom SQL parser with jinja hooks
