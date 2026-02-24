@@ -664,6 +664,8 @@ require('lazy').setup({
           },
         },
 
+        marksman = {},
+
         bashls = {},
 
         gopls = {},
